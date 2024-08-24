@@ -1,0 +1,36 @@
+import unittest
+from models import storage
+from models.user import User
+from sqlalchemy.exc import IntegrityError
+"""
+Module defines a test for database storage
+"""
+
+
+class TestDBStorage(unittest.TestCase):
+    """ Test DBStorage """
+
+    def setUp(self):
+        """ Set up test environment """
+        # clear database
+        self.clear_db()
+
+    def tearDown(self):
+        """ Tear down test environment """
+        # closes the database session
+        storage.close()
+
+    def test_reload(self):
+        """Test reloading the session"""
+        new_user = User(username='reloadtest', email='reload@example.com', password="testpwd")
+        storage.add(new_user)
+        storage.save()
+
+        # Reload the session
+        storage.reload()
+
+        # Verify that the user still exists after reload
+        user_key = f"User.{new_user.id}"
+        reloaded_user = storage.get(User, user_key)
+        self.assertIsNotNone(reloaded_user)
+        self.assertEqual(reloaded_user.username, 'reloadtest')
