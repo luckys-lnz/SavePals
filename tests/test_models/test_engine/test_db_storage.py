@@ -31,10 +31,9 @@ class TestDBStorage(unittest.TestCase):
         storage.reload()
 
         # Verify that the user still exists after reload
-        user_key = f"User.{new_user.id}"
-        reloaded_user = storage.get(User, user_key)
+        reloaded_user = storage.get(User, new_user.id)
         self.assertIsNotNone(reloaded_user)
-        self.assertEqual(reloaded_user.username, 'reloadtest')s
+        self.assertEqual(reloaded_user.username, 'reloadtest')
 
     def test_add(self):
         """ Test add a new object to the database """
@@ -43,8 +42,7 @@ class TestDBStorage(unittest.TestCase):
         storage.add(new_user)
 
         # Verify that the user was added by retrieving it from the database
-        user_key = f"User.{new_user.id}"
-        retrieved_user = storage.get(User, user_key)
+        retrieved_user = storage.get(User, new_user.id)
         self.assertIsNotNone(retrieved_user)
         self.assertEqual(retrieved_user.username, 'testuser')
 
@@ -55,8 +53,7 @@ class TestDBStorage(unittest.TestCase):
         storage.add(new_user)
 
         # Retrieve the user and check its attributes
-        user_key = f"User.{new_user.id}"
-        retrieved_user = storage.get(User, user_key)
+        retrieved_user = storage.get(User, new_user.id)
         self.assertIsNotNone(retrieved_user)
         self.assertEqual(retrieved_user.username, 'getuser')
 
@@ -94,8 +91,8 @@ class TestDBStorage(unittest.TestCase):
 
         # Verify the user is added
         storage.reload()
-        user_key = f"User.{new_user.id}"
-        retrieved_user = storage.get(User, user_key)
+
+        retrieved_user = storage.get(User, new_user.id)
         self.assertIsNotNone(retrieved_user)
 
         storage.delete(new_user)
@@ -103,8 +100,8 @@ class TestDBStorage(unittest.TestCase):
 
         # Verify the user is added
         storage.reload()
-        user_key = f"User.{new_user.id}"
-        deleted_user = storage.get(User, user_key)
+
+        deleted_user = storage.get(User, new_user.id)
         self.assertIsNone(deleted_user)
 
     def test_update(self):
@@ -116,8 +113,7 @@ class TestDBStorage(unittest.TestCase):
         storage.update(User, new_user.id, username='updateduser')
 
         # Verify that the user's username was updated
-        user_key = f"User.{new_user.id}"
-        updated_user = storage.get(User, user_key)
+        updated_user = storage.get(User, new_user.id)
         self.assertEqual(updated_user.username, 'updateduser')
 
     def test_save(self):
@@ -127,8 +123,7 @@ class TestDBStorage(unittest.TestCase):
         storage.add(new_user)
 
         # Directly check that the user exists in the database
-        user_key = f"User.{new_user.id}"
-        retrieved_user = storage.get(User, user_key)
+        retrieved_user = storage.get(User, new_user.id)
         self.assertIsNotNone(retrieved_user)
 
     def clear_db(self):

@@ -2,7 +2,7 @@
 import time
 import unittest
 from datetime import datetime
-from models.base_model import BaseModel
+from models.user import User
 """
 Module defines a test for the `User` class
 """
