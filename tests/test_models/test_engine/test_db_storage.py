@@ -24,7 +24,7 @@ class TestDBStorage(unittest.TestCase):
         """Test reloading the session"""
         new_user = User(username='reloadtest', email='reload@example.com',
                         password="testpwd")
-        storage.add(new_user)
+        storage. new(new_user)
         storage.save()
 
         # Reload the session
@@ -35,11 +35,11 @@ class TestDBStorage(unittest.TestCase):
         self.assertIsNotNone(reloaded_user)
         self.assertEqual(reloaded_user.username, 'reloadtest')
 
-    def test_add(self):
+    def test_new(self):
         """ Test add a new object to the database """
         new_user = User(username='testuser', email='test@example.com',
                         password="testpwd")
-        storage.add(new_user)
+        storage.new(new_user)
 
         # Verify that the user was added by retrieving it from the database
         retrieved_user = storage.get(User, new_user.id)
@@ -50,7 +50,7 @@ class TestDBStorage(unittest.TestCase):
         """ Test get an object by ID """
         new_user = User(username='getuser', email='get@example.com',
                         password="testpwd")
-        storage.add(new_user)
+        storage.new(new_user)
 
         # Retrieve the user and check its attributes
         retrieved_user = storage.get(User, new_user.id)
@@ -63,8 +63,8 @@ class TestDBStorage(unittest.TestCase):
                      password="testpwd1")
         user2 = User(username='user2', email='user2@example.com',
                      password="testpwd2")
-        storage.add(user1)
-        storage.add(user2)
+        storage.new(user1)
+        storage.new(user2)
 
         all_users = storage.all(User)
         self.assertEqual(len(all_users), 2)
@@ -77,7 +77,7 @@ class TestDBStorage(unittest.TestCase):
         initial_count = storage.count(User)
         new_user = User(username='countuser', email='count@example.com',
                         password="testpwd")
-        storage.add(new_user)
+        storage.new(new_user)
 
         updated_count = storage.count(User)
         self.assertEqual(updated_count, initial_count + 1)
@@ -86,7 +86,7 @@ class TestDBStorage(unittest.TestCase):
         """ Test: delete an object from the database """
         new_user = User(username='deleteuser', email='delete@example.com',
                         password="testpwd")
-        storage.add(new_user)
+        storage.new(new_user)
         storage.save()
 
         # Verify the user is added
@@ -108,7 +108,7 @@ class TestDBStorage(unittest.TestCase):
         """ Test: update an object's attributes """
         new_user = User(username='updateuser', email='update@example.com',
                         password="testpwd")
-        storage.add(new_user)
+        storage.new(new_user)
 
         storage.update(User, new_user.id, username='updateduser')
 
@@ -120,7 +120,7 @@ class TestDBStorage(unittest.TestCase):
         """ Test: save changes to the database """
         new_user = User(username='saveuser', email='save@example.com',
                         password="testpwd")
-        storage.add(new_user)
+        storage.new(new_user)
 
         # Directly check that the user exists in the database
         retrieved_user = storage.get(User, new_user.id)
@@ -134,6 +134,17 @@ class TestDBStorage(unittest.TestCase):
             session.execute(table.delete())
         session.commit()
 
-    def close(self):
-        """Closes the current session."""
-        self.session.close()
+    def test_close(self):
+        """ Test: closes the current session."""
+        new_user = User(username='updateuser', email='update@example.com',
+
+                        password="testpwd")
+        storage.new(new_user)
+        storage.save()
+
+        # close session
+        storage.close()
+
+        # Attempt to query after closing (should raise an exception)
+        with self.assertRaises(StatementError):
+            storage.get(User, new_user.id)
