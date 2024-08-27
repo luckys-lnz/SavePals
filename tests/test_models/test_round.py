@@ -31,7 +31,7 @@ class TestRound(unittest.TestCase):
 
     def test_class_attributes_type(self):
         """ Test class attributes type """
-        self.assertIsInstance(self.round.group_id, int)
+        self.assertIsInstance(self.round.group_id, str)
         self.assertIsInstance(self.round.round_number, int)
         self.assertIsInstance(self.round.amount, int)
 
