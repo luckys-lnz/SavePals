@@ -18,7 +18,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_class_attributes(self):
         """ tests instance attributes """
-        self.assertIsInstance(self.obj.id, int)
+        self.assertIsInstance(self.obj.id, str)
         self.assertIsInstance(self.obj.created_at, datetime)
         self.assertIsInstance(self.obj.updated_at, datetime)
 
