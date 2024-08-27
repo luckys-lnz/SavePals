@@ -10,9 +10,9 @@ from models.base_model import Base
 user_group_association = Table(
     'user_group',
     Base.metadata,
-    Column('user_id', Integer, ForeignKey('users.id'),
+    Column('user_id', String(60), ForeignKey('users.id'),
            primary_key=True),
-    Column('group_id', Integer, ForeignKey('groups.id'),
+    Column('group_id', String(60), ForeignKey('groups.id'),
            primary_key=True),
     Column('is_admin', Boolean, nullable=False, default=False),
     Column('joined_at', DateTime, nullable=False,
