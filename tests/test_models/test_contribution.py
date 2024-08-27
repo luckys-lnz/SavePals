@@ -37,9 +37,9 @@ class TestContribution(unittest.TestCase):
 
     def test_class_attributes_type(self):
         """ Test class attributes type """
-        self.assertIsInstance(self.contribution.user_id, int)
-        self.assertIsInstance(self.contribution.group_id, int)
-        self.assertIsInstance(self.contribution.round_id, int)
+        self.assertIsInstance(self.contribution.user_id, str)
+        self.assertIsInstance(self.contribution.group_id, str)
+        self.assertIsInstance(self.contribution.round_id, str)
         self.assertIsInstance(self.contributions.amount, int)
 
     def test_inherits_from_base_model(self):
