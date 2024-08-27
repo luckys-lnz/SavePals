@@ -33,7 +33,7 @@ class TestGroup(unittest.TestCase):
         """ Test class attributes type """
         self.assertIsInstance(self.group.name, str)
         self.assertIsInstance(self.group.description, str)
-        self.assertIsInstance(self.group.creator_id, int)
+        self.assertIsInstance(self.group.creator_id, str)
 
     def test_inherits_from_base_model(self):
         """ Test class inherits from `BaseModel` class """
