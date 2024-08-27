@@ -35,9 +35,9 @@ class TestPayout(unittest.TestCase):
 
     def test_class_attributes_type(self):
         """ Test class attributes type """
-        self.assertIsInstance(self.payout.user_id, int)
-        self.assertIsInstance(self.payout.group_id, int)
-        self.assertIsInstance(self.payout.round_id, int)
+        self.assertIsInstance(self.payout.user_id, str)
+        self.assertIsInstance(self.payout.group_id, str)
+        self.assertIsInstance(self.payout.round_id, str)
         self.assertIsInstance(self.payout.amount, int)
 
     def test_inherits_from_base_model(self):
