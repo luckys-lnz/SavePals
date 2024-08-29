@@ -2,7 +2,8 @@
 import time
 import unittest
 from datetime import datetime
-from models.base_model import BaseModel
+from models import storage
+from models.base_for_testing import TestBase
 """
 Module defines a test for the `BaseModel` class
 """
@@ -12,9 +13,27 @@ class TestBaseModel(unittest.TestCase):
     """
     Test BaseModel class
     """
+    @classmethod
+    def setUpClass(cls):
+        """ Setup for all tests """
+        cls.storage = storage
+
     def setUp(self):
         """ SetUp test environment """
-        self.obj = BaseModel()
+        self.storage._DBStorage__session.begin_nested()  # nested transaction
+        self.obj = TestBase(name="test 1")
+        self.storage.new(self.obj)
+        self.storage.save()
+
+    def tearDown(self):
+        """ Clean up test environment """
+        self.storage._DBStorage__session.rollback()  # Rollback transaction
+        self.storage._DBStorage__session.remove()
+
+    @classmethod
+    def tearDownClass(cls):
+        """ Cleanup after all tests """
+        cls.storage.close()  # Use the close method to clean up resources
 
     def test_class_attributes(self):
         """ tests instance attributes """
@@ -53,7 +72,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn('created_at', obj_dict)
         self.assertIn('updated_at', obj_dict)
         self.assertIn('__class__', obj_dict)
-        self.assertEqual(cls_name, 'BaseModel')
+        self.assertEqual(cls_name, 'TestBase')
 
         self.assertIsInstance(obj_dict['created_at'], str)
         self.assertIsInstance(obj_dict['updated_at'], str)
@@ -65,7 +84,7 @@ class TestBaseModel(unittest.TestCase):
         obj_dict = self.obj.to_dict()
 
         # create object
-        new_obj = BaseModel(**obj_dict)
+        new_obj = TestBase(**obj_dict)
 
         self.assertNotIn('__class__', new_obj.__dict__)
         self.assertIsInstance(new_obj.created_at, datetime)
