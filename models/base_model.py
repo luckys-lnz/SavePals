@@ -29,14 +29,38 @@ class BaseModel:
     def __init__(self, **kwargs):
         """Initializes a new model"""
         if kwargs:
-            # Remove 'id', 'created_at', and 'updated_at' from kwargs
-            kwargs.pop('id', None)
-            kwargs.pop('created_at', None)
-            kwargs.pop('updated_at', None)
+            if 'updated_at' in kwargs:
+                # recreate obj -- from to_dict()
+                kwargs['updated_at'] = datetime.strptime(
+                    kwargs['updated_at'], '%Y-%m-%dT%H:%M:%S.%f')
+            else:
+                # new obj
+                self.updated_at = datetime.now()
+
+            if 'created_at' in kwargs:
+                # recreate obj -- from to_dict()
+                kwargs['created_at'] = datetime.strptime(
+                    kwargs['created_at'], '%Y-%m-%dT%H:%M:%S.%f')
+            else:
+                # new obj
+                self.created_at = datetime.now()
+
+            if 'id' not in kwargs:
+                # new obj
+                self.id = str(uuid.uuid4())
+
+            if '__class__' in kwargs:
+                # recreate obj -- from to_dict()
+                del kwargs['__class__']
 
             # set attribute to the instance
             for attr_name, attr_value in kwargs.items():
                 setattr(self, attr_name, attr_value)
+
+    def __str__(self):
+        """Returns a string representation of the instance"""
+        cls = (str(type(self)).split('.')[-1]).split('\'')[0]
+        return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
 
     def save(self):
         """ Update the time then save object to storage """
