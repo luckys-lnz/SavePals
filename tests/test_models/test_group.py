@@ -2,6 +2,7 @@
 import time
 import unittest
 from datetime import datetime
+from models import storage
 from models.user import User
 from models.group import Group
 from models.base_model import BaseModel
@@ -14,14 +15,33 @@ class TestGroup(unittest.TestCase):
     """
     Test Group class
     """
+    @classmethod
+    def setUpClass(cls):
+        """ Setup for all tests """
+        cls.storage = storage
 
     def setUp(self):
         """ Setup test environment """
+        self.storage._DBStorage__session.begin_nested()  # nested transaction
         self.user = User(email="testuser@email.com", password="tst_pwd",
-                         first_name="john", last_name="Doe")
+                         first_name="john", last_name="Doe", user_name="ttoe")
+        self.storage.new(self.user)
+        self.storage.save()
         self.group = Group(name="group 1",
                            description="Help friends in crisis",
                            creator_id=self.user.id)
+        self.storage.new(self.group)
+        self.storage.save()
+
+    def tearDown(self):
+        """ Clean up test environment """
+        self.storage._DBStorage__session.rollback()  # Rollback transaction
+        self.storage._DBStorage__session.remove()
+
+    @classmethod
+    def tearDownClass(cls):
+        """ Cleanup after all tests """
+        cls.storage.close()  # Use the close method to clean up resources
 
     def test_class_attributes(self):
         """ Test class attributes """
