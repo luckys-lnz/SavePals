@@ -3,8 +3,8 @@
 This module defines a Group class
 """
 from models.base_model import BaseModel, Base
-from models.use_group import user_group_association
-from sqlalchemy import Column, String
+from models.user_group import user_group_association
+from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 
