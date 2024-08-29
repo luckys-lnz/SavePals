@@ -6,7 +6,7 @@ import os
 from models.base_model import Base
 from models.user import User
 from models.group import Group
-from models.round import Round
+from models.round_ import Round
 from models.payout import Payout
 from models.contribution import Contribution
 from sqlalchemy import create_engine
@@ -19,6 +19,11 @@ passwd = os.getenv('HBNB_MYSQL_PWD')
 host = os.getenv('HBNB_MYSQL_HOST')
 db = os.getenv('HBNB_MYSQL_DB')
 hbnb_env = os.getenv('HBNB_ENV')
+
+
+# import to test BaseModel -- testing purposes only
+if hbnb_env == "test":
+    from models.base_for_testing import TestBase
 
 
 class DBStorage:
@@ -58,7 +63,16 @@ class DBStorage:
 
     def get(self, cls, id):
         """ Retrieves an object based on its class and ID """
-        return self.__session.query(cls).get(id)
+        if id is None:
+            raise ValueError("ID cannot be None")
+
+        obj = self.__session.query(cls).get(id)
+
+        if obj is None:
+            # Handle the case where no object is found
+            raise ValueError(f"No object found with ID {id}")
+
+        return obj
 
     def new(self, obj):
         """ Add object to the current database session """
@@ -70,7 +84,7 @@ class DBStorage:
 
     def count(self, cls):
         """ Counts the number of objects of specified class """
-        self.__session.query(cls).count()
+        return self.__session.query(cls).count()
 
     def delete(self, obj=None):
         """ Delete from the current database session """
