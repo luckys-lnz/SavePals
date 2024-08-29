@@ -2,7 +2,8 @@
 """
 This module defines a user_group table
 """
-from sqlalchemy import Table, Column, Integer, ForeignKey
+from datetime import datetime
+from sqlalchemy import Table, Column, String, Boolean, DateTime, ForeignKey
 from models.base_model import Base
 
 
