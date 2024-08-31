@@ -74,6 +74,21 @@ class DBStorage:
 
         return obj
 
+    def filter(self, cls, **kwargs):
+        """
+        Filter all instances of a given class based on the provided criteria.
+        """
+        # Get all instances of the specified class
+        all_objects = self.all(cls).values()
+
+        # Filter objects that match all criteria in kwargs
+        filtered_objects = [
+            obj for obj in all_objects
+            if all(getattr(obj, key) == value for key, value in kwargs.items())
+        ]
+
+        return filtered_objects
+
     def new(self, obj):
         """ Add object to the current database session """
         self.__session.add(obj)
