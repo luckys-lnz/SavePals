@@ -65,6 +65,38 @@ class TestDBStorage(unittest.TestCase):
         self.assertIsNotNone(retrieved_user)
         self.assertEqual(retrieved_user.user_name, 'getuser')
 
+    def test_filter(self):
+        """ Test: filter results from database storage """
+        user1 = User(first_name='test', last_name='data',
+                     user_name='user1', email='user1@example.com',
+                     password="testpwd1")
+        user2 = User(first_name='test', last_name='data',
+                     user_name='user2', email='user2@example.com',
+                     password="testpwd2")
+        user3 = User(first_name='test', last_name='data1',
+                     user_name='user3', email='user3@example.com',
+                     password="testpwd1")
+        user4 = User(first_name='test', last_name='data2',
+                     user_name='user4', email='user4@example.com',
+                     password="testpwd2")
+
+        # save to storage
+        user1.save()
+        user2.save()
+        user3.save()
+        user4.save()
+
+        # reload from storage
+        storage.reload()
+
+        users = storage.filter(User, last_name='data')
+        self.assertEqual(len(users), 2)
+
+        user_ids = [user.id for user in users]
+
+        self.assertIn(user1.id, user_ids)
+        self.assertIn(user2.id, user_ids)
+
     def test_all(self):
         """ Test: retrieve all objects of a specific class """
         user1 = User(first_name='test', last_name='data',
