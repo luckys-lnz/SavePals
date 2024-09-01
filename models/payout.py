@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 """
-Module defines the Round class.
+Module defines a Round class.
 """
 from models.base_model import BaseModel, Base
-import models
-from models.engine import DBstorage
-import sqlalchemy
-from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
+from sqlalchemy import Column, String, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 
 
