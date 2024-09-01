@@ -1,11 +1,8 @@
 #!/usr/bin/python3
-
 """
-Round table holds data for next collector in a group.
-
-Base on the plan agreement.
+Module defines the Round class.
 """
-
+from models.base_model import BaseModel, Base
 import models
 from models.engine import DBstorage
 import sqlalchemy
@@ -15,24 +12,10 @@ from sqlalchemy.orm import relationship
 
 class Payout(BaseModel, Base):
     """Representation of the user turns table."""
+    __tablename__ = 'payouts'
 
-    if models.storage_t == 'db':
-        __tablename__ = 'payout'
-
-        #table colums
-        id = Column(Integer, primary_key=True)
-        round_id = Column(Integer, ForeignKey=('round.id'), nullable=False)
-        user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-        amount = Column(Float, nullable=False)
-        payment_date = Column(sqlalchemy.DateTime, nullable=False,
-                              default=sqlalchemy.funct.now())
-
-        # Table Relationships
-        round = relationship('Round', back_populates='payouts')
-        user = relationship('User', back_populates='payouts')
-
-    else:
-        round_id = 0
-        user_id = 0
-        amount = 0.00
-        payment_date = None
+    # table colums
+    group_id = Column(String, ForeignKey('groups.id'), nullable=False)
+    round_id = Column(String, ForeignKey('rounds.id'), nullable=False)
+    user_id = Column(String, ForeignKey('users.id'), nullable=False)
+    amount = Column(Float, nullable=False)
