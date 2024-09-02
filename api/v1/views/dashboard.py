@@ -47,3 +47,5 @@ def round_summary(group_id, round_id):
                           round_.contributions]
     }
     return jsonify(summary_data)
+
+
