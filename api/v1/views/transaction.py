@@ -5,7 +5,6 @@ from models.contribution import Contribution
 from models import storage
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
-from flasgger.utils import swag_from
 
 
 @app_views.route('/transactions/contributions/<contribution_id>',

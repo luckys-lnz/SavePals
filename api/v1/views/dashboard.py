@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
 Object that displays the summary of the API.
-
 actions for groups and rounds.
 """
 
-from models.round import Round
+from models.round_ import Round
 from models.group import Group
 from models import storage
 from api.v1.views import app_views
