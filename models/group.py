@@ -18,3 +18,10 @@ class Group(BaseModel, Base):
     users = relationship('User',
                          secondary=user_group_association,
                          back_populates='groups')
+
+    def to_dict(self):
+        """Convert the instance to a dictionary format."""
+        dict_representation = super().to_dict()
+        # Handle 'users' relationship explicitly
+        dict_representation['users'] = [user.to_dict() for user in self.users]
+        return dict_representation
