@@ -34,10 +34,10 @@ class TestContribution(unittest.TestCase):
         self.storage.new(self.group)
         self.storage.save()
 
-        self.round = Round(group_id=self.group.id, round_number=2, amount=5000)
-        self.storage.new(self.round)
+        self.new_round = Round(group_id=self.group.id, round_number=2, amount=5000)
+        self.storage.new(self.new_round)
         self.storage.save()
-        self.contribution = Contribution(round_id=self.round.id,
+        self.contribution = Contribution(round_id=self.new_round.id,
                                          group_id=self.group.id,
                                          user_id=self.user.id,
                                          amount=5000.45)
@@ -58,7 +58,7 @@ class TestContribution(unittest.TestCase):
         """ Test class attributes """
         self.assertEqual(self.contribution.user_id, self.user.id)
         self.assertEqual(self.contribution.group_id, self.group.id)
-        self.assertEqual(self.contribution.round_id, self.round.id)
+        self.assertEqual(self.contribution.round_id, self.new_round.id)
         self.assertEqual(self.contribution.amount, 5000.45)
 
     def test_class_attributes_type(self):
