@@ -9,8 +9,20 @@ from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 
 
-@app_views.route('/groups/<group_id>/rounds/<round_id>',
-                 methods=['GET'], strict_slashes=False)
+@app_views.route('/groups/<group_id>/rounds', methods=['GET'],
+                 strict_slashes=False)
+def get_rounds(group_id):
+    """Retrieve the list of all Rounds object in a group."""
+    group = storage.get(Group, group_id)
+    if not group:
+        abort(404)
+
+    list_rounds = [round_.to_dict() for round_ in group.rounds]
+    return jsonify(list_rounds)
+
+
+@app_views.route('/groups/<group_id>/rounds/<round_id>', methods=['GET'],
+           strict_slashes=False)
 def get_round(group_id, round_id):
     """Retrieve a specific round based on round_id and group_id."""
     group = storage.get(Group, group_id)
@@ -35,6 +47,7 @@ def create_round(group_id):
     data = request.get_json()
     if not data:
         abort(400, "Not a Json")
+
     required_fields = ['round_number', 'amount']
     for field in required_fields:
         if field not in data:
