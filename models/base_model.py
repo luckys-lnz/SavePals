@@ -86,7 +86,7 @@ class BaseModel:
         # Update the object in storage
         storage.update(cls, obj_id, kwargs)
 
-    def to_dict(self):
+    def to_dict(self, depth=1):
         """
         Returns: dictionary containing all key/values of __dict__ of the
         instance
@@ -96,7 +96,12 @@ class BaseModel:
             if key == "created_at" or key == "updated_at":
                 obj_dict[key] = datetime.isoformat(value)
             else:
-                obj_dict[key] = value
+                # Handle depth control if the value is an instance of a model
+                if hasattr(value, 'to_dict') and depth > 0:
+                    obj_dict[key] = value.to_dict(depth - 1)
+                else:
+                    obj_dict[key] = value
+
         obj_dict["__class__"] = type(self).__name__
         if '_sa_instance_state' in obj_dict:
             del obj_dict['_sa_instance_state']
