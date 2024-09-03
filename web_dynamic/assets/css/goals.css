@@ -1,0 +1,67 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.header select{
+  height: 45px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.goals-btn {
+  outline: 2px;
+  border: 2px solid;
+  padding: 13px 24px;
+  border-radius: 8px;
+  background-color: #ffffff00;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.goals-btn span {
+ font-size: 20px;
+ margin-right: 5px;
+}
+
+.goals-btn:hover {
+  background-color: #010c01;
+  color: #ffff;
+}
+
+.select-plan .filter {
+  margin-top: 5px;
+}
+
+.create-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff00;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.create-button:hover {
+  background-color: #010c01;
+  color: #ffff;
+}
+
+.plans h4 {
+  margin-left: 5px;
+}
+
+#form-placeholder {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-right: 2rem;
+}

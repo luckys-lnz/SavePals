@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SavePals Goals</title>
+    <link rel="stylesheet" href="./assets/css/general.css" />
+    <link rel="stylesheet" href="./assets/css/goals.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+    />
+  </head>
+  <body class="root">
+    <!-- Dynamic Navigation component -->
+    <nav id="navbar-placeholder"></nav>
+
+    <main class="page-body">
+        <!-- In Goals.html -->
+          <!-- select plan container (to be toggled with the form-placeholder id below) -->
+          <section class="select-plan-container">
+
+            <!-- header -->
+            <header class="header">
+              <div class="select-plan">
+                <div>
+                  <h4>Select Plan</h4>
+                </div>
+                <div class="filter">
+                  <select>
+                    <option value="graduation">Graduation Plan</option>
+                  </select>
+                </div>
+              </div>
+              <div class="create-goal">
+                <button class="goals-btn"> <span>+</span> Create New Goal</button>
+              </div>
+            </header>
+
+            <!-- plans section -->
+            <section class="plans">
+              <div class="plan-card">
+                <p class="amount">$8,000</p>
+                <button class="create-button">+</button>
+                <h4>Contribute</h4>
+              </div>
+            </section>
+
+            <!-- transactions -->
+            <section class="transactions">
+              <div class="head">
+                <div>
+                  <h4>Transactions</h4>
+                </div>
+              </div>
+              <ul>
+                <li>
+                  <span>Dean</span>
+                  <span>+$5500</span>
+                  <span>Graduation plan</span>
+                </li>
+                <li>
+                  <span>Lucky</span>
+                  <span>+$6200</span>
+                  <span>Graduation plan</span>
+                </li>
+                <li>
+                  <span>You</span>
+                  <span>+$1750</span>
+                  <span>Graduation plan</span>
+                </li>
+                <li>
+                  <span>Simi</span>
+                  <span>+$3000</span>
+                  <span>Graduation plan</span>
+                </li>
+                <li>
+                  <span>You</span>
+                  <span>+$4800</span>
+                  <span>Graduation plan</span>
+                </li>
+              </ul>
+            </section>
+          </section>
+
+          <!-- Create Plan Container (to be toggled with the select-plan-container class) -->
+          <section id="form-placeholder"></section>
+    </main>
+
+    <!-- Dynamic Navigation Script -->
+    <script src="assets/scripts/navbar.js"></script>
+    <script src="assets/scripts/form.js"></script>
+  </body>
+</html>
