@@ -16,3 +16,12 @@ class Payout(BaseModel, Base):
     round_id = Column(String, ForeignKey('rounds.id'), nullable=False)
     user_id = Column(String, ForeignKey('users.id'), nullable=False)
     amount = Column(Float, nullable=False)
+
+    # Relationship back to the Group model
+    group = relationship('Group', back_populates='payouts')
+
+    # Relationship back to the User model
+    user = relationship('User', back_populates='payouts')
+
+    # Relationship back to the Round model
+    round_ = relationship('Round', back_populates='payouts')
