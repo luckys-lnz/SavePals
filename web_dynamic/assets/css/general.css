@@ -163,6 +163,16 @@ body {
   margin-top: 10px;
 }
 
+.plan-card .new-plan {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #0080ff;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 .transactions {
   display: flex;
   flex-direction: column;
@@ -175,7 +185,11 @@ body {
 
 .plan-card h3 {
   font-size: 20px;
-  margin-bottom: 10px;
+}
+
+.plan-card h4 {
+  font-size: 20px;
+  text-align: center;
 }
 
 .transactions .head {

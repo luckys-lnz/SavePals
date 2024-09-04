@@ -16,71 +16,61 @@
     <nav id="navbar-placeholder"></nav>
 
     <main class="page-body">
+
       <section class="profile">
-        <div class="profile-header">
-          <img
-            src="profile-picture.jpg"
-            alt="Profile Picture"
-            class="profile-picture"
-          />
-          <h1 class="profile-name">Abudu Benedict</h1>
-          <p class="profile-bio">Web Developer | Tech Enthusiast | Blogger</p>
+        <div class="profile-picture">
         </div>
 
         <!-- Profile Details -->
         <form class="profile-details">
           <!-- Personal Info -->
-          <div class="personal-info">
-            <h2>Personal Information</h2>
-
+          <div class="name">
             <div class="form-group">
-              <label for="location">Location:</label>
+              <label for="first name">First name</label>
               <input
                 type="text"
-                name="location"
-                id="location"
-                value="Lagos State, Nigeria"
+                name="first name"
+                id="first name"
+                value="Benedict"
+                required
               />
-              <button class="edit-btn">edit</button>
             </div>
            
             <div class="form-group">
-              <label for="age">Age:</label>
-              <input type="number" name="age" id="age" value="20" />
-              <button class="edit-btn">edit</button>
-            </div>
-
-            <div class="form-group">
-              <label for="profession">Profession:</label>
-              <input type="text" name="profession" id="profession" value="Web Developer" />
-              <button class="edit-btn">edit</button>
+              <label for="last name">Last name</label>
+              <input type="text" name="last name" id="last name" value="Abudu" />
             </div>
           </div>
 
-          <!-- Contact Info -->
-          <div class="contact-info">
-            <h2>Contact Information</h2>
-
+          <div class="email">
             <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" name="email" id="email" value="aben@example.com" />
-              <button class="edit-btn">edit</button>
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone:</label>
-              <input type="text" name="phone" id="phone" value="+234 907647467" />
-              <button class="edit-btn">edit</button>
+              <label for="email">Email address</label>
+              <input type="email" name="email" id="email" value="bobuzytech@gmail.com" />
             </div>
           </div>
 
-          <!-- Social Media Links -->
-          <div class="social-media">
-            <h2>Social Media</h2>
-            <a href="" target="_blank">Twitter</a>
-            <a href="" target="_blank">LinkedIn</a>
-            <a href="" target="_blank">GitHub</a>
+          <div class="password">
+            <h3>Password change</h3>
+            <div class="form-group">
+              <label for="current password">Current password</label>
+              <input type="password" name="current password" id="current password" value="jhdgdtyui9876" />
+            </div>
+
+            <div class="form-group">
+              <label for="new password">New password</label>
+              <input type="password" name="new password" id="new password" value="" />
+            </div>
+
+            <div class="form-group">
+              <label for="confirm password">Confirm password</label>
+              <input type="confirm password" name="confirm password" id="confirm password" value="" />
+            </div>
           </div>
+
+          <div class="call-to-action">
+            <button class="submit-btn">Save changes</button>
+          </div>
+
         </form>
       </section>
     </main>
