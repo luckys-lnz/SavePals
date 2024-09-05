@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup and Login Page</title>
+    <link rel="stylesheet" href="./assets/css/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+
+            <!-- enable switching tabs -->
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event, 'signup')">Signup</button>
+                <button class="tablinks" onclick="openTab(event, 'login')">Login</button>
+            </div>
+
+            <!-- Signup Page -->
+            <div id="signup" class="form-box tabcontent active">
+                <h2>Signup</h2>
+                <form id="signup-form" action="#" method="POST">
+
+                    <!-- First name -->
+                    <div class="input-group">
+                        <label for="signup-first-name">First Name</label>
+                        <input type="text" id="signup-first-name" name="first_name" required pattern="[A-Za-z]+"
+                            placeholder="Marshall">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="input-group">
+                        <label for="signup-last-name">Last Name</label>
+                        <input type="text" id="signup-last-name" name="last_name" required pattern="[A-Za-z]+"
+                            placeholder="Martins">
+                    </div>
+
+                    <!-- Age -->
+                    <div class="input-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" required min="1" max="120"
+                            placeholder="Enter your age">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="email" required placeholder="you@example.com">
+                    </div>
+
+                    <!-- Phone number -->
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" name="phone" required pattern="^\(\d{3}\) \d{3}-\d{4}$"
+                            placeholder="(123) 456-7890">
+                    </div>
+
+                    <!-- Password -->
+                    <div class="input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password" required minlength="6"
+                            placeholder="Enter your password">
+                    </div>
+                    <button type="submit">Signup</button>
+                </form>
+                <div id="signup-messages" class="messages">
+                    <div id="signup-error" class="message error-message"></div>
+                    <div id="signup-success" class="message success-message"></div>
+                </div>
+            </div>
+
+            <!-- Login Page -->
+            <div id="login" class="form-box tabcontent">
+                <h2>Login</h2>
+                <form id="login-form" action="#" method="POST">
+                    <div class="input-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" required placeholder="you@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" required minlength="6"
+                            placeholder="Enter your password">
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <div id="login-messages" class="messages">
+                    <div id="login-error" class="message error-message"></div>
+                    <div id="login-success" class="message success-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/scripts/login.js"></script>
+</body>
+
+</html>

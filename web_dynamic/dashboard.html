@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SavePals Dashboard</title>
+	<link rel="stylesheet" href="./assets/css/general.css" />
+	<link
+	  rel="stylesheet"
+	  href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+	/>
+  	</head>
+	<body class="root">
+		<!-- Dynamic Navigation component -->
+		<nav id="navbar-placeholder"></nav>
+
+		<main class="page-body">
+			<section>
+				<h2>Dashboard</h2>
+			</section>
+
+			<section class="plans">
+				<div class="plan-card">
+					<h3>For rent</h3>
+					<p class="amount">$52,000</p>
+					<a href="#" class="see-plan">See plan</a>
+				</div>
+				<div class="plan-card">
+					<h3>Graduation plan</h3>
+					<p class="amount">$8,000</p>
+					<a href="#" class="see-plan">See plan</a>
+				</div>
+				<div class="plan-card">
+					<a href="/new-plan.html" class="new-plan">+</a>
+					<h4>Create New Plan</h3>
+					
+				</div>
+			</section>
+
+			<section class="transactions">
+				<div class="head">
+					<div>
+						<h3>Transactions</h3>
+					</div>
+					<div class="filter">
+						<select>
+							<option>For All</option>
+							<option>For Me</option>
+						</select>
+					</div>
+					<div class="filter">
+						<select>
+							<option>All Plans</option>
+							<option>Daily Plans</option>
+							<option>Weekly Plans</option>
+							<option>Monthly Plans</option>
+						</select>
+					</div>
+				</div>
+				<ul>
+					<li>
+						<span>Dean</span>
+						<span>+$5500</span>
+						<span>Graduation plan</span>
+					</li>
+					<li>
+						<span>Lucky</span>
+						<span>+$6200</span>
+						<span>Graduation plan</span>
+					</li>
+					<li>
+						<span>You</span>
+						<span>+$1750</span>
+						<span>For rent</span>
+					</li>
+					<li>
+						<span>Simi</span>
+						<span>+$3000</span>
+						<span>For rent</span>
+					</li>
+					<li>
+						<span>You</span>
+						<span>+$4800</span>
+						<span>Graduation plan</span>
+					</li>
+				</ul>
+			</section>
+		</main>
+		
+		<!-- Dynamic Navigation Script -->
+		<script src="assets/scripts/navbar.js"></script>
+  	</body>
+</html>
