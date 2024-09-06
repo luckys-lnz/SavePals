@@ -10,7 +10,7 @@ from models import storage
 from models.user import User
 
 @auth_bp.route('/signup', methods=['POST'], strict_slashes=False)
-def signup():                       
+def signup():
     # retrieve user data
     data = request.get_json()
 
@@ -47,7 +47,7 @@ def login():
     # Check if the provided password matches the stored hashed password
     if not check_password_hash(user.password, password):
         return jsonify({'message': 'Invalid password'}), 401
-        
+
     # Create JWT token
     access_token = create_access_token(identity={'email': user.email})
 

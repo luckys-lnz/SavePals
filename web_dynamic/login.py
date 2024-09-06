@@ -21,7 +21,7 @@ def get_index():
 @app.route('/dashboard')
 def dashboard():
     # Replace 'dashboard.html' with the correct template for your dashboard
-    return render_template('dashboard.html')                    
+    return render_template('dashboard.html')
 
 
 if __name__ == "__main__":

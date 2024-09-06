@@ -14,15 +14,15 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 
 # get the environ variabes
-user = os.getenv('HBNB_MYSQL_USER')
-passwd = os.getenv('HBNB_MYSQL_PWD')
-host = os.getenv('HBNB_MYSQL_HOST')
-db = os.getenv('HBNB_MYSQL_DB')
-hbnb_env = os.getenv('HBNB_ENV')
+user = os.getenv('SAVEPAL_PSQL_USER')
+passwd = os.getenv('SAVEPAL_PSQL_PWD')
+host = os.getenv('SAVEPAL_PSQL_HOST')
+db = os.getenv('SAVEPAL_PSQL_DB')
+savepal_env = os.getenv('SAVEPAL_ENV')
 
 
 # import to test BaseModel -- testing purposes only
-if hbnb_env == "test":
+if savepal_env == "test":
     from models.base_for_testing import TestBase
 
 
@@ -38,7 +38,7 @@ class DBStorage:
             f"postgresql+psycopg2://{user}:{passwd}@{host}/{db}",
             pool_pre_ping=True)
 
-        if hbnb_env == "test":
+        if savepal_env == "test":
             # Drop all tables if test environment
             Base.metadata.drop_all(self.__engine)
 

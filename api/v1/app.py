@@ -2,6 +2,7 @@
 """
 Module defines a Flask application
 """
+from flask_cors import CORS
 from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
@@ -11,6 +12,7 @@ from flask_jwt_extended import JWTManager
 
 
 app = Flask(__name__)
+CORS(app)
 app.config['JWT_SECRET_KEY'] = 'savepal_dean_lucky_ben'
 jwt = JWTManager(app)
 
@@ -33,6 +35,6 @@ def teardown(exception=None):
 
 
 if __name__ == '__main__':
-    host = os.getenv('HBNB_API_HOST', '0.0.0.0')
-    port = int(os.getenv('HBNB_API_PORT', 5000))
+    host = os.getenv('SAVEPAL_API_HOST', '0.0.0.0')
+    port = int(os.getenv('SAVEPAL_API_PORT', 5000))
     app.run(host=host, port=port, threaded=True, debug=True)
