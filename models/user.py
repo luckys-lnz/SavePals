@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """This module defines a class User"""
 from models.base_model import BaseModel, Base
+from sqlalchemy import Column, Integer, String, create_engine
 from models.user_group import user_group_association
-from sqlalchemy import Column, String
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, sessionmaker
 
 
 class User(BaseModel, Base):
@@ -14,7 +14,8 @@ class User(BaseModel, Base):
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=False)
     last_name = Column(String(128), nullable=False)
-    user_name = Column(String(128), nullable=False)
+    phone = Column(String(128), nullable=False)
+    age = Column(Integer, nullable=False)
 
     # Relationship to Group through the association table
     groups = relationship('Group',

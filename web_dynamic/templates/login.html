@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Signup and Login Page</title>
     <link rel="stylesheet" href="../static/css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -41,7 +41,8 @@
                     <!-- Age -->
                     <div class="input-group">
                         <label for="age">Age</label>
-                        <input type="number" id="age" name="age" min="1" max="120" placeholder="Enter your age">
+                        <input type="number" id="age" name="age" required min="1" max="120"
+                            placeholder="Enter your age">
                     </div>
 
                     <!-- Email -->
@@ -88,14 +89,14 @@
                 </form>
                 <div id="login-messages" class="messages">
                     <div id="login-error" class="message error-message"></div>
-                    <div id="login-success" class="message success-message"></div>  
+                    <div id="login-success" class="message success-message"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="../static/scripts/login.js"></script>
     <script src="../static/scripts/signup.js"></script>
+    <script src="../static/scripts/login.js"></script>
 </body>
 
 </html>

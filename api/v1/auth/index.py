@@ -6,6 +6,8 @@ from flask import request, jsonify, abort
 from flask_jwt_extended import JWTManager, create_access_token
 from werkzeug.security import check_password_hash, generate_password_hash
 from api.v1.auth import auth_bp
+from models.user import User
+from models import storage
 
 
 @auth_bp.route('/api/signup', methods=['POST'])
@@ -36,11 +38,11 @@ def login():
     password = data.get('password')
 
     user = storage.filter_by(User, email=data['email'])
-    pass = user.password
+    passwd = user.password
 
     if not user:
         return jsonify({'message': 'Invalid email'}), 401
-    if password != pass:
+    if password != passwd:
         return jsonify({'message': 'Invalid password'}), 401
 
     # Create JWT token
