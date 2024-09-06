@@ -1,0 +1,142 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.header select{
+  height: 45px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.goals-btn {
+  outline: 2px;
+  border: 2px solid;
+  padding: 13px 24px;
+  border-radius: 8px;
+  background-color: #ffffff00;
+  cursor: pointer;
+  margin-top: 23px;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  color: #000;
+  
+}
+
+.goals-btn h5 {
+ font-size: 15px;
+ margin-right: 8px;
+
+}
+
+.goals-btn:hover {
+  background-color: #010c01;
+  color: #ffff;
+}
+
+.select-plan select {
+  margin-top: 4px;
+  border: 2px solid;
+  padding: 10px;
+  height: 46px;
+  width: 170px;
+  border-radius: 8px;
+}
+
+.create-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff00;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 13px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+  outline: 2px;
+  border: 2px solid;
+
+}
+
+.create-button:hover {
+  background-color: #010c01;
+  color: #ffff;
+}
+
+.plans h4 {
+  margin-left: 5px;
+}
+
+.goals {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+}
+
+.goal-card {
+  width: 100%;
+  padding: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.group-goal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #4CAF50;
+  width: 0%;
+  text-align: center;
+  color: white;
+  line-height: 30px;
+  border-radius: 25px 0 0 25px;
+  transition: width 0.5s ease;
+}
+
+.withdraw-btn {
+  outline: 2px;
+  border: 2px solid;
+  padding: 13px 24px;
+  background-color: #ffffff00;
+  cursor: pointer;
+  margin-top: 23px;
+}
+
+.withdraw-btn:hover {
+  background-color: #0080ff;
+  color: #ffff;
+}
+
+
+#form-placeholder {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-right: 2rem;
+}
