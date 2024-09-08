@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Objects that handle all default RestFul API actions for transactions."""
+"""Objects that handle all default RestFul API actions for transactionss"""
 from models.payout import Payout
 from models.contribution import Contribution
 from models import storage
