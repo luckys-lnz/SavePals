@@ -3,7 +3,7 @@ $(document).ready(function() {
     const userId = sessionStorage.getItem('user_id');
 
     $.ajax({
-        url: 'http://127.0.0.1:5001/api/v1/users/${userId}/groups',
+        url: `http://127.0.0.1:5001/api/v1/users/${userId}/groups`,
         method: 'GET',
         success: function(plans) {
             // Clear existing plans
@@ -14,7 +14,7 @@ $(document).ready(function() {
                 $('#plans').append(`
                     <div class="plan-card">
                         <h3>${plan.name}</h3>
-                        <p class="amount">${plan.amount}</p>
+                        <p class="amount">${plan.description}</p>
                         <a href="#" class="see-plan">See plan</a>
                     </div>
                 `);
