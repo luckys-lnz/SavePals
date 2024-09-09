@@ -82,11 +82,29 @@ def get_user_transactions(user_id):
     # create the transactions
     transactions = {
         'contributions':
-        [contribution.to_dict() for contribution in contributions],
-        'payments': [payment.to_dict() for payment in payments]
+        [contribution.to_dict(depth=2) for contribution in contributions],
+        'payments': [payment.to_dict(depth=2) for payment in payments]
     }
 
     return jsonify(transactions), 200
+
+
+@app_views.route('/users/<user_id>/groups/<group_id>/transactions', methods=['GET'],
+                 strict_slashes=False)
+def get_user_group_transactions(user_id, group_id):
+    """Retrieve transactions based on the user_id and group_id"""
+    contributions = storage.filter(Contribution, user_id=user_id, group_id=group_id)
+    payments = storage.filter(Payout, user_id=user_id, group_id=group_id)
+
+    # create the transactions
+    transactions = {
+        'contributions':
+        [contribution.to_dict(depth=2) for contribution in contributions],
+        'payments': [payment.to_dict(depth=2) for payment in payments]
+    }
+
+    return jsonify(transactions), 200
+
 
 
 @app_views.route('/groups/<group_id>/transactions', methods=['GET'],
@@ -99,8 +117,8 @@ def get_group_transactions(group_id):
     # create the transactions
     transactions = {
         'contributions':
-        [contribution.to_dict() for contribution in contributions],
-        'payments': [payment.to_dict() for payment in payments]
+        [contribution.to_dict(depth=2) for contribution in contributions],
+        'payments': [payment.to_dict(depth=2) for payment in payments]
     }
 
     return jsonify(transactions), 200

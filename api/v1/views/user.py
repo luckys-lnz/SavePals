@@ -25,6 +25,19 @@ def list_users():
     return jsonify(list_users)
 
 
+@app_views.route('/users/<user_id>/groups',
+                 methods=['GET'], strict_slashes=False)
+def list_user_groups(user_id):
+    """Retrieve the list of all groups of a specified user"""
+    user = storage.get(User, user_id)
+    # Check if the user exists
+    if not user:
+        abort(404, description="User not found")
+
+    list_groups = [group.to_dict(depth=2) for group in user.groups]
+    return jsonify(list_groups)
+
+
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def update_user(user_id):
     """Update a user profile based on user_id."""
