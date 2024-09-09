@@ -25,3 +25,21 @@ class Contribution(BaseModel, Base):
 
     # Relationship back to the Round model
     round_ = relationship('Round', back_populates='contributions')
+
+
+
+    def to_dict(self, depth=1):
+        """Convert the instance to a dictionary format."""
+
+        # Define the level of serialization needed
+        if depth <= 0:
+            # Stop serialization when depth is zero or negative
+            return {}
+
+        dict_representation = super().to_dict(depth)
+        # Handle 'users' relationship explicitly
+        dict_representation['user'] = self.user.to_dict(depth - 1)
+        dict_representation['round'] = self.round_.to_dict(depth - 1)
+        dict_representation['group'] = self.group.to_dict(depth - 1)
+
+        return dict_representation
