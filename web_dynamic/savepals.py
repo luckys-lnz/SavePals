@@ -30,23 +30,23 @@ def profile():
     return render_template('profile.html')      
 
 
-@app.route('/goals')
+@app.route('/user/plans')
 def goals():
     """Route to the user profile,and shows information of the user."""
-    return render_template('profile.html')      
+    return render_template('profile.html')
+
+
+@app.route('/create/plan')
+def create_plan():
+    """Returns the create new plan page"""
+    return render_template("new-plan.html")
 
 
 @app.route('/friends')
 def friends():
     """Route to the user profile,and shows information of the user."""
-    return render_template('profile.html')      
-
-
-@app.route('/logout')
-def logout():
-    """Route to the user profile,and shows information of the user."""
-    return render_template('profile.html')      
-
+    return render_template('friends.html')      
+     
 
 if __name__ == "__main__":
     """ Main Function """

@@ -7,15 +7,15 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}" />
 	<link
 	  rel="stylesheet"
-   href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
-   />
+      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   	</head>
 	<body class="root">
 
 		<!-- Dynamic Navigation component -->
-		<nav id="navbar-placeholder">	
-    {% include 'navbar.html' %}
+		<nav id="navbar-placeholder">
+			{% include 'navbar.html' %}
 		</nav>
 
 		<main class="page-body">
@@ -25,7 +25,6 @@
 
 			<section id="plans" class="plans">
 				<!--Dynamic plans of the user-->
-				</div>
 			</section>
 
 			<section class="transactions">
@@ -52,7 +51,6 @@
 		</main>
 		
 		<!-- Dynamic Script -->
-		<script src="{{ url_for('static', filename='scripts/navbar.js') }}"></script>
 		<script src="{{ url_for('static', filename='scripts/plan.js') }}"></script>
 		<script src="{{ url_for('static', filename='scripts/transaction.js') }}"></script>
 		<script src="{{ url_for('static', filename='scripts/user.js') }}"></script>

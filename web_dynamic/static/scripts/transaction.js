@@ -52,15 +52,16 @@ $(document).ready(function () {
 
         // Handle payments
         payments.forEach((payment) => {
-          const { user, amount, group } = payment;
-          const firstName = user?.first_name || "Unknown";
-          const groupName = group?.name || "No Group";
+          const user = payment.user || {}; // Provide empty object fallback
+          const group = payment.group || {}; // Provide empty object fallback
+          const firstName = user.first_name || "Unknown";
+          const groupName = group.name || "No Group";
 
           // Append the payment details to the list
           $("#list-transactions").append(`
             <li>
               <span>${firstName}</span>
-              <span>${amount}</span>
+              <span>${payment.amount}</span>
               <span>${groupName}</span>
             </li>
           `);
