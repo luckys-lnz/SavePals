@@ -1,19 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Get the user ID from the URL
-  const url = new URL(window.location.href);
   const user_id = sessionStorage.getItem("user_id");
 
-  // Check if user_id is available
   if (!user_id) {
-    console.error("User ID not found in the URL");
+    console.error("User ID not found");
     return;
   }
 
-  // Fetch profile from API
+  // Fetch profile data when the page loads
   getProfile(user_id);
+
+  // Ensure the form element exists before attaching event listener
+  const profileForm = document.querySelector(".profile-form");
+  if (profileForm) {
+    profileForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:5001/api/v1/users/${user_id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Failed to update profile: ${response.status}`);
+        }
+
+        // Log the user out and redirect to login
+        sessionStorage.removeItem("user_id");
+        window.location.href = "/signup";
+      } catch (error) {
+        console.error("Error updating profile:", error.message);
+      }
+    });
+  } else {
+    console.error("Profile form not found.");
+  }
 });
 
-// Fetch profile from API
 async function getProfile(user_id) {
   const url = `http://127.0.0.1:5001/api/v1/users/${user_id}`;
 
@@ -25,32 +60,17 @@ async function getProfile(user_id) {
       },
     });
 
-    // Check if response is okay
     if (!response.ok) {
       throw new Error(`Failed to fetch user profile: ${response.status}`);
     }
 
-    // Parse the response JSON
     const json = await response.json();
-    console.log("API Response:", json);
-
-    // Check if the required data exists
-    if (!json || !json.first_name || !json.last_name || !json.email || !json.age || !json.phone) {
-      console.error("Incomplete user data received");
-      return;
-    }
-
-    // Populate the profile form with the fetched data
     document.getElementById("first-name").value = json.first_name || "";
     document.getElementById("last-name").value = json.last_name || "";
     document.getElementById("email").value = json.email || "";
     document.getElementById("age").value = json.age || "";
     document.getElementById("phone").value = json.phone || "";
-
-    // For testing purpose
-    console.log("User profile fetched successfully:", json);
   } catch (error) {
     console.error("Error fetching profile:", error.message);
   }
 }
-

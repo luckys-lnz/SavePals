@@ -36,6 +36,12 @@ def profile():
     return render_template('profile.html')      
 
 
+@app.route('/update_profile')
+def update_profile():
+    """Route to the user login, Allows user to login with new credentials."""
+    return render_template('login.html')
+
+
 @app.route('/goals')
 def goals():
     """Route to the user profile,and shows information of the user."""
