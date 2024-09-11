@@ -94,7 +94,7 @@ $(document).ready(function () {
       // Populate the select element with fetched data
       const $select = $("#plan-select");
       $select.empty(); // Clear any existing options
-
+      $select.append(`<option>select plan</option>`);
       // Iterate through the fetched groups data and append options
       groups.forEach((group) => {
         $select.append(`
