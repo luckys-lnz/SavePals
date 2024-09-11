@@ -26,55 +26,6 @@ $(document).ready(function () {
   });
 });
 
-// Handles select round filter
-// $(document).ready(function () {
-//   // Retrieve the value of 'group_id' from the plan select filter
-//   const groupId = $("select:first").val();
-
-//   $.ajax({
-//     url: `http://127.0.0.1:5001/api/v1/groups/${groupId}/rounds`,
-//     method: "GET",
-//     dataType: "json",
-//     success: function (rounds) {
-//       // Populate the select element with fetched data
-//       const $select = $("#round-select");
-//       $select.empty(); // Clear any existing options
-
-//       // Append a default option
-//       $select.append('<option value="">Select a Round</option>');
-
-//       // Iterate through the fetched rounds data and append options
-//       rounds.forEach((round) => {
-//         $select.append(`
-//                       <option value="${round.id}">
-//                           ${round.round_number}
-//                       </option>
-//                   `);
-//       });
-//     },
-//     error: function (xhr, status, error) {
-//       console.error("Failed to fetch data:", error);
-//     },
-//   });
-//   // Event listener for when a plan is selected
-//   $("#plan-select").on("change", function () {
-//     const groupId = $(this).val(); // Get the selected group ID from #plan-select
-//     if (groupId) {
-//       loadRounds(groupId); // Load rounds for the selected group
-//     } else {
-//       // Clear rounds if no group is selected
-//       $("#round-select")
-//         .empty()
-//         .append('<option value="">Select a Round</option>');
-//     }
-//   });
-
-//   // Initial load of rounds if a plan is already selected
-//   const initialGroupId = $("#plan-select").val();
-//   if (initialGroupId) {
-//     loadRounds(initialGroupId);
-//   }
-// });
 
 
 $(document).ready(function () {
