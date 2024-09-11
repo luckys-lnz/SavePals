@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
+
 <body class="root">
     <!-- Dynamic Navigation component -->
     <nav id="navbar-placeholder">
@@ -25,7 +24,7 @@
                 <div id="contribute-error" class="message error-message"></div>
                 <div id="contribute-success" class="message success-message"></div>
             </div>
-             <form id="contribute-form" class="contribute-form">
+            <form id="contribute-form" class="contribute-form">
                 <h4>Contribute Towards</h4>
                 <div class="form-group">
                     <label>Plan Name:</label>
@@ -33,7 +32,7 @@
                         <select id="plan-select">
                             <!--Dynamically populate list of user plans-->
                         </select>
-                        <select id="round-select"></select>
+                        <select id="round-select">
                             <!--Dynamically populate list of user plans-->
                         </select>
                     </div>
@@ -51,6 +50,7 @@
         </section>
     </main>
     <!--Include JS file-->
-    <script src="{{ url_for('static', filename='scripts/user.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/contribute.js') }}"></script>
 </body>
+
 </html>
