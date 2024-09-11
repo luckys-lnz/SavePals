@@ -18,6 +18,12 @@ def get_index():
     return render_template('login.html')
 
 
+@app.route('/logout', methods=['GET'], strict_slashes=False )
+def logout():
+    """Get the index page"""
+    return render_template('login.html')
+
+
 @app.route('/dashboard')
 def dashboard():
     # Replace 'dashboard.html' with the correct template for your dashboard
@@ -30,13 +36,13 @@ def profile():
     return render_template('profile.html')      
 
 
-@app.route('/user/plans')
+@app.route('/goals')
 def goals():
     """Route to the user profile,and shows information of the user."""
-    return render_template('profile.html')
+    return render_template('goals.html')
 
 
-@app.route('/create/plan')
+@app.route('/create_plan')
 def create_plan():
     """Returns the create new plan page"""
     return render_template("new-plan.html")
@@ -45,8 +51,20 @@ def create_plan():
 @app.route('/friends')
 def friends():
     """Route to the user profile,and shows information of the user."""
-    return render_template('friends.html')      
-     
+    return render_template('friends.html')
+
+
+@app.route('/contribute')
+def contribute():
+    """Route to the user contribution,and shows information of the user."""
+    return render_template('contribute.html')
+
+
+@app.route('/round_')
+def round_():
+    """Route to the user rounds,and shows information of the user."""
+    return render_template('round_.html')
+
 
 if __name__ == "__main__":
     """ Main Function """
