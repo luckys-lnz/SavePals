@@ -1,84 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SavePals Goals</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/goal.css') }}" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  </head>
-  <body class="root">
-    <!-- Dynamic Navigation component -->
-    <nav id="navbar-placeholder">
-      {% include 'navbar.html' %}
-    </nav>
 
-    <main class="page-body">
-      <!-- In Goals.html -->
-      <!-- select plan container (to be toggled with the form-placeholder id below) -->
-      <section class="select-plan-container">
-        <!-- header -->
-        <header class="header">
-          <div class="select-plan">
-            <div>
-              <h4>Select Plan</h4>
-            </div>
-            <div class="filter">
-              <select id="plan-select">
-                 <!--Dynamically populate list of plans-->
-              </select>
-            </div>
-          </div>
-          <div class="create-goal">
-            <a href="{{ url_for('create/plan') }}" class="goals-btn">
-              <h5>+</h5>
-              Create New Goal
-            </a>
-          </div>
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SavePals Goals</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}" />
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/goal.css') }}" /> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
 
-        <!-- plans section -->
-        <section class="goals">
-          <div id="group-card" class="goal-card">
-                <!--Dynamically add group goals details-->
-          </div>
+<body class="root">
+  <!-- Dynamic Navigation component -->
+  <nav id="navbar-placeholder">
+    {% include 'navbar.html' %}
+  </nav>
 
-          <div id="contribution-card" class="goal-card">
-               <!--Dynamically add contribution card for group-->
+  <main class="page-body">
+    <!-- In Goals.html -->
+    <!-- select plan container (to be toggled with the form-placeholder id below) -->
+    <section class="select-plan-container">
+      <!-- header -->
+      <header class="header">
+        <div class="select-plan">
+          <div>
+            <h4>Select Plan</h4>
           </div>
-
-          <div id="withdrawal-card" class="goal-card">
-               <!--Dynamically add withdrawal card for group-->
+          <div class="filter">
+            <select id="plan-select">
+              <!--Dynamically populate list of plans-->
+            </select>
           </div>
-        </section>
+        </div>
+        <div class="create-goal">
+          <a href="{{ url_for('create_plan') }}" class="goals-btn">
+            <h5>+</h5>
+            Create New Goal
+          </a>
+        </div>
+      </header>
 
-        <!-- transactions -->
-        <section class="transactions">
-          <div class="head">
-            <div>
-              <h3>Transactions</h3>
-            </div>
+      <!-- plans section -->
+      <section class="goals">
+        <div id="group-card" class="goal-card">
+          <!--Dynamically add group goals details-->
+        </div>
 
-            <div class="filter">
-              <select>
-                <option value="">For All</option>
-                <option value="personal">For Me</option>
-              </select>
-            </div>
-          </div>
-          <ul id="list-transactions">
-            <!--Dynamically list group transactions-->
-          </ul>
-        </section>
+        <div id="contribution-card" class="goal-card">
+          <!--Dynamically add contribution card for group-->
+        </div>
+
+        <div id="withdrawal-card" class="goal-card">
+          <!--Dynamically add withdrawal card for group-->
+        </div>
       </section>
-    </main>
 
-    <!-- Dynamic Navigation Script -->
-    <script src="{{ url_for('static', filename='scripts/goal.js') }}"></script>
-  </body>
+      <!-- transactions -->
+      <section class="transactions">
+        <div class="head">
+          <div>
+            <h3>Transactions</h3>
+          </div>
+
+          <div class="filter">
+            <select>
+              <option value="">For All</option>
+              <option value="personal">For Me</option>
+            </select>
+          </div>
+        </div>
+        <ul id="list-transactions">
+          <!--Dynamically list group transactions-->
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <!-- Dynamic Navigation Script -->
+  <script src="{{ url_for('static', filename='scripts/goal.js') }}"></script>
+
+  <script>
+    // Define URL variables inside a script block to be rendered by Flask
+    const contributeURL = "{{ url_for('contribute') }}";
+  </script>
+</body>
+
 </html>
