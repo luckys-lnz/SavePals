@@ -1,147 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SavePals Goals</title>
-    <link rel="stylesheet" href="../static/css/general.css" />
-    <link rel="stylesheet" href="../static/css/goals.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
-    />
-  </head>
-  <body class="root">
-    <!-- Dynamic Navigation component -->
-    <nav id="navbar-placeholder"></nav>
 
-    <main class="page-body">
-      <!-- In Goals.html -->
-      <!-- select plan container (to be toggled with the form-placeholder id below) -->
-      <section class="select-plan-container">
-        <!-- header -->
-        <header class="header">
-          <div class="select-plan">
-            <div>
-              <h4>Select Plan</h4>
-            </div>
-            <div class="filter">
-              <select>
-                <option>Graduation Plan</option>
-                <option>For Rent</option>
-              </select>
-            </div>
-          </div>
-          <div class="create-goal">
-            <a href="new-plan.html" class="goals-btn">
-              <h5>+</h5>
-              Create New Goal
-            </a>
-          </div>
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SavePals Goals</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/general.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/goals.css') }}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/0b34fff31b.js" crossorigin="anonymous"></script>
+</head>
+web_dynamic/static/css/goals.css
+<body class="root">
+  <!-- Dynamic Navigation component -->
+  <nav id="navbar-placeholder">
+    {% include 'navbar.html' %}
+  </nav>
 
-        <!-- plans section -->
-        <section class="goals">
-          <div class="goal-card">
-            <h4>Graduation Plan</h4>
+  <main class="page-body">
+    <!-- In Goals.html -->
+    <!-- select plan container (to be toggled with the form-placeholder id below) -->
+    <section class="select-plan-container">
+      <!-- header -->
+      <!-- Goals Header -->
+<header class="header">
+  <div class="select-plan-container">
+    <div class="filter">
+      <select id="plan-select">
+        <!-- Dynamically populate list of plans -->
+      </select>
+    </div>
+  </div>
+  <div class="create-goal">
+    <a href="{{ url_for('create_plan') }}" class="goals-btn">
+      <h5><i class="fa-sharp fa-solid fa-plus"></i> Create New Goal</h5>
+    </a>
+  </div>
+</header>
 
-            <div class="group-goal">
-              <div>
-                <p>Group Balance</p>
-                <h5>$6,000</h5>
-              </div>
 
-              <div>
-                <p>Target</p>
-                <h5>$30,000</h5>
-              </div>
+      <!-- plans section -->
+      <section class="goals">
+        <div id="group-card" class="goal-card">
+          <!--Dynamically add group goals details-->
+        </div>
 
-              <div>
-                <p>Members</p>
-                <h5>3</h5>
-              </div>
-            </div>
-            <h5>Group Progress</h5>
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 30%"></div>
-            </div>
-          </div>
+        <div id="contribution-card" class="goal-card">
+          <!--Dynamically add contribution card for group-->
+        </div>
 
-          <div class="goal-card">
-            <h4>My Contribution</h4>
-            <div class="group-goal">
-              <div>
-                <h3 class="amount">$2,000</h3>
-              </div>
-              <div>
-                <a href="contribute.html" class="create-button">+</a>
-                <h5>Contribute</h5>
-              </div>
-            </div>
-            <h5>My Progress</h5>
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 10%"></div>
-            </div>
-          </div>
-
-          <div class="goal-card">
-            <h4>Wallet</h4>
-            <h2 class="amount">$2,000</h2>
-            <h5>Amount Available for withdrawal</h5>
-            <button class="withdraw-btn">withdraw</button>
-          </div>
-        </section>
-
-        <!-- transactions -->
-        <section class="transactions">
-          <div class="head">
-            <div>
-              <h3>Transactions</h3>
-            </div>
-
-            <div class="filter">
-              <select>
-                <option>For All</option>
-                <option>For Me</option>
-              </select>
-            </div>
-          </div>
-          <ul>
-            <li>
-              <span>Dean</span>
-              <span>+$5500</span>
-              <span>Graduation plan</span>
-            </li>
-            <li>
-              <span>Lucky</span>
-              <span>+$6200</span>
-              <span>Graduation plan</span>
-            </li>
-            <li>
-              <span>You</span>
-              <span>+$1750</span>
-              <span>Graduation plan</span>
-            </li>
-            <li>
-              <span>Simi</span>
-              <span>+$3000</span>
-              <span>Graduation plan</span>
-            </li>
-            <li>
-              <span>You</span>
-              <span>+$4800</span>
-              <span>Graduation plan</span>
-            </li>
-          </ul>
-        </section>
+        <div id="withdrawal-card" class="goal-card">
+          <!--Dynamically add withdrawal card for group-->
+        </div>
       </section>
 
-      <!-- Create Plan Container (to be toggled with the select-plan-container class) -->
-      <!-- <section id="form-placeholder"></section> -->
-    </main>
+      <!-- transactions -->
+      <section class="transactions">
+        <div class="head">
+          <div>
+            <h3>Transactions</h3>
+          </div>
 
-    <!-- Dynamic Navigation Script -->
-    <script src="../static/scripts/navbar.js"></script>
-    <script src="../static/scripts/form.js"></script>
-  </body>
+          <div class="filter">
+            <select>
+              <option value="">For All</option>
+              <option value="personal">For Me</option>
+            </select>
+          </div>
+        </div>
+        <ul id="list-transactions">
+          <!--Dynamically list group transactions-->
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <!-- Dynamic Navigation Script -->
+  <script src="{{ url_for('static', filename='scripts/goal.js') }}"></script>
+
+  <script>
+    // Define URL variables inside a script block to be rendered by Flask
+    const contributeURL = "{{ url_for('contribute') }}";
+  </script>
+</body>
+
 </html>

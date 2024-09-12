@@ -84,7 +84,8 @@ def create_group():
     """Create a new group."""
     data = request.get_json()
 
-    required_keys = ['name', 'description', 'creator_id']
+    required_keys = ['name', 'description', 'target_amount', 'number_members',
+                     'creator_id', 'start_date', 'end_date', 'payment_intervals']
     missing_keys = [key for key in required_keys if key not in data]
     if missing_keys:
         abort(400, description=f"Missing {', '.join(missing_keys)}")

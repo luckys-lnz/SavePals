@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../static/css/general.css" />
-    <link rel="stylesheet" href="../static/css/form.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
+
 <body class="root">
     <!-- Dynamic Navigation component -->
-<nav id="navbar-placeholder"></nav>
+    <nav id="navbar-placeholder">
+        {% include 'navbar.html' %}
+    </nav>
 
     <main class="page-body">
-     <!-- Plan Details -->
-     <section class="contribute">
-        <!-- <h2>Create a New Goal</h2> -->
-        <form class="contribute-form">
-            <h4>Contribute Towards</h4>
-            <div class="form-group">
-                <label>Plan Name:</label>
-                <div class="filter">
-                    <select>
-                      <option>Graduation Plan</option>
-                      <option>For Rent</option>
-                    </select>
-                  </div>
+        <!-- Plan Details -->
+        <section class="contribute">
+            <div id="contribute-messages" class="messages">
+                <div id="contribute-error" class="message error-message"></div>
+                <div id="contribute-success" class="message success-message"></div>
             </div>
+            <form id="contribute-form" class="contribute-form">
+                <h4>Contribute Towards</h4>
+                <div class="form-group">
+                    <label>Plan Name:</label>
+                    <div class="filter">
+                        <select id="plan-select">
+                            <!--Dynamically populate list of user plans-->
+                        </select>
+                        <select id="round-select">
+                            <!--Dynamically populate list of user plans-->
+                        </select>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label>Amount:</label>
-                 <input type="number">
-            </div>
+                <div class="form-group">
+                    <label>Amount:</label>
+                    <input id="amount" type="number" name="amount" placeholder="1000" required>
+                </div>
 
-            <div class="contribute-btn">
-                <button type="submit" class="submit-button">Contribute</button>
-            </div>
-        </form>
-    </section>
-</main> 
-
-    <!-- Dynamic Navigation Script -->
-		<script src="../static/css/navbar.js"></script>
+                <div class="contribute-btn">
+                    <button type="submit" class="submit-button">Contribute</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!--Include JS file-->
+    <script src="{{ url_for('static', filename='scripts/contribute.js') }}"></script>
 </body>
+
 </html>

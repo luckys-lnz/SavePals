@@ -4,7 +4,7 @@ This module defines a Group class
 """
 from models.base_model import BaseModel, Base
 from models.user_group import user_group_association
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
 
@@ -14,6 +14,11 @@ class Group(BaseModel, Base):
     __tablename__ = 'groups'
     name = Column(String(128), nullable=False)
     description = Column(String(128), nullable=False)
+    target_amount = Column(Integer, nullable=False)
+    start_date = Column(DateTime, nullable=False)
+    end_date = Column(DateTime, nullable=False)
+    payment_intervals = Column(String, nullable=False)
+    number_members = Column(Integer, nullable=False)
     creator_id = Column(String(60), ForeignKey('users.id'), nullable=False)
 
     # Define many to many relationships
@@ -38,6 +43,7 @@ class Group(BaseModel, Base):
             return {}
 
         dict_representation = super().to_dict(depth)
+
         # Handle 'users' relationship explicitly
         dict_representation['users'] = [user.to_dict(depth - 1) for user in self.users]
         dict_representation['rounds'] = [rnd.to_dict(depth - 1) for rnd in self.rounds]

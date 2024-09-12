@@ -1,13 +1,13 @@
 <!-- navbar component -->
 <header class="navbar">
 	<div class="logo">
-		<a href="dashboard.html">
-			<img src="../static/images/logo.png" alt="" />
+		<a href="{{ url_for('dashboard') }}">
+			<img src="{{ url_for('static', filename='images/logo.png') }}" alt="" />
 		</a>
 	</div>
 	<div class="nav-info">
 		<!-- Dynamic username to be inserted below -->
-		<h2>Hello, Benedict!</h2>
+		<h2 id="user-first-name"></h2>
 		<p>Save money with your friends</p>
 	</div>
 	<button class="btn">Contact Us</button>
@@ -16,11 +16,12 @@
 <!-- sidebar component -->
 <nav class="sidebar">
 	<ul class="links">
-		<li class="nav-link"><a href="dashboard.html">Dashboard</a></li>
-		<li class="nav-link"><a href="goals.html">Goals</a></li>
-		<li class="nav-link"><a href="friends.html">Friends</a></li>
-		<!-- <li class="nav-link"><a href="cards.html">Cards</a></li> -->
-		<li class="nav-link"><a href="profile.html">Profile</a></li>
+		<li class="nav-link"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+		<li class="nav-link"><a href="{{ url_for('goals') }}">Goals</a></li>
+		<li class="nav-link"><a href="{{ url_for('friends') }}">Friends</a></li>
+		<li class="nav-link"><a href="{{ url_for('profile') }}">Profile</a></li>
+		<li class="nav-link"><a href="{{ url_for('round_') }}">create rouund</a></li>
+		<li class="nav-link"><a href="{{ url_for('contribute') }}">contribute</a></li>
 	</ul>
-	<a href="logout.html" class="logout">Log out</a>
+	<a href="{{ url_for('logout') }}" class="logout">Logout</a>
 </nav>
