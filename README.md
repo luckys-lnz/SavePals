@@ -8,7 +8,6 @@ SavePals is a collaborative savings platform that allows friends to save money t
 
 <img alt="Overview of SavePals application dashboard" src="web_dynamic/static/images/dashboard.jpg" width="70%">
 
-
 **How it works**
 
 This application comprises of two parts, the first is the API server that defines the endpoints used to access the data in the storage and the second part is the web_dynamic server that renders application templates. Using JQuery, API calls are made to the API server and data is populated in the templates.
