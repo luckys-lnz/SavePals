@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SavePals Friends</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/profile.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/general.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body class="root">
+    <!-- Dynamic Navigation component -->
+    <nav id="navbar-placeholder">{% include 'navbar.html' %}</nav>
+
+    <main class="page-body">
+      <section class="profile">
+        <div class="profile-picture"></div>
+
+        <!-- Profile Details -->
+        <form class="profile-form">
+          <!-- Personal Info -->
+          <div class="name">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input
+                type="text"
+                name="first_name"
+                id="first-name"
+                placeholder="Benedict"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input
+                type="text"
+                name="last_name"
+                id="last-name"
+                placeholder="Abudu"
+              />
+            </div>
+          </div>
+
+          <div class="email">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="bobuzytech@gmail.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="age">
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                placeholder="25"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="text"
+                name="phone_number"
+                id="phone"
+                placeholder="(027)555-2222"
+              />
+            </div>
+          </div>
+
+          <div class="password">
+            <h3>Password Change</h3>
+            <div class="form-group">
+              <label for="current-password">Current Password</label>
+              <input
+                type="password"
+                name="current_password"
+                id="current-password"
+                placeholder="*************"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="new-password">New Password</label>
+              <input type="password" name="new_password" id="new-password" />
+            </div>
+
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                name="confirm_password"
+                id="confirm-password"
+              />
+            </div>
+          </div>
+
+          <div class="call-to-action">
+            <button type="submit" class="submit-btn">Save Changes</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- Dynamic Navigation Script -->
+    <script src="{{ url_for('static', filename='scripts/navbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/profile.js') }}"></script>
+  </body>
+</html>

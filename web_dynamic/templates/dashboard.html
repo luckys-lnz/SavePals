@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SavePals Dashboard</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}" />
+	<link
+	  rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  	</head>
+	<body class="root">
+
+		<!-- Dynamic Navigation component -->
+		<nav id="navbar-placeholder">
+			{% include 'navbar.html' %}
+		</nav>
+
+		<main class="page-body">
+			<section>
+				<h2>Dashboard</h2>
+			</section>
+
+			<section id="plans" class="plans">
+				<!--Dynamic plans of the user-->
+			</section>
+
+			<section class="transactions">
+				<div class="head">
+					<div>
+						<h3>Transactions</h3>
+					</div>
+					<div class="filter">
+						<select id="user-filter">
+							<option value="">All Users</option>
+							<option value="personal">Personal</option>
+						</select>
+					</div>
+					<div class="filter">
+						<select id="plan-select">
+							<!--Dynamically list user plans-->
+						</select>
+					</div>
+				</div>
+				<ul id="list-transactions">
+					<!--Dynamically list transactions based on the above filters-->
+				</ul>
+			</section>
+		</main>
+		
+		<!-- Dynamic Script -->
+		<script src="{{ url_for('static', filename='scripts/plan.js') }}"></script>
+		<script src="{{ url_for('static', filename='scripts/transaction.js') }}"></script>
+		<script>const newPlanUrl = "{{ url_for('create_plan') }}";</script>
+		<script src="{{ url_for('static', filename='scripts/user.js') }}"></script>
+
+  	</body>
+</html>

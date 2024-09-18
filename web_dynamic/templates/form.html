@@ -1,0 +1,47 @@
+    <section class="goal-container">
+        <h2>Create a New Goal</h2>
+        <div id="plan-messages" class="messages">
+            <div id="plan-error" class="message error-message"></div>
+            <div id="plan-success" class="message success-message"></div>
+        </div>
+        <form id="create-plan-form" class="create-goal-form">
+            <h4>Plan Details</h4>
+            <div class="form-group">
+                <label for="goal-name">Goal Name:</label>
+                <input type="text" id="goal-name" name="goal-name" placeholder="Enter the goal name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="no-of-members">No of members:</label>
+                <input type="number" id="num-of-members" name="no-of-members" required>
+            </div>
+
+            <div class="form-group">
+                <label for="target">Plan target:</label>
+                <input type="number" id="target-amount" name="plan-target" required>
+            </div>
+
+            <div class="form-group">
+                <label for="plan-description">Plan Description (Optional):</label>
+                <textarea id="plan-description" name="plan-description" placeholder="Describe your plan"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+
+             <div class="form-group">
+                <label for="set-interval">Set interval btw payment:</label>
+                <input type="text" id="payment-interval" name="payment-interval" required>
+            </div>  
+
+            <div class="form-group">
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date" required>
+            </div>
+            <div class="call-to-action"></div>
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </section>

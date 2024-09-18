@@ -1,0 +1,176 @@
+/* Main page body for Goals */
+.page-body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  padding: 120px 20px 20px; /* Adjust left padding to accommodate sidebar width */
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Goals Header */
+.header {
+  display: flex;
+  justify-content: space-between; /* Distribute space between children */
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 2px solid #000;
+}
+
+.header .select-plan-container {
+  display: flex;
+  align-items: center;
+}
+
+.header .select-plan {
+  margin-right: 20px; /* Space between select and create button */
+}
+
+.header .filter {
+  margin-right: auto; /* Pushes filter to the left */
+}
+
+.header .filter select {
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.create-goal {
+  margin-left: auto; /* Pushes create goal button to the right */
+}
+
+/* Goals section */
+.goals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Individual goal card */
+.goal-card {
+  flex: 1 1 calc(33.333% - 20px); /* Three columns layout with spacing */
+  min-width: 250px;
+  max-width: 300px;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.goal-card h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.goal-card .group-goal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goal-card .progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.goal-card .progress-bar {
+  height: 100%;
+  background-color: #091f42;
+  transition: width 0.4s ease;
+}
+
+/* Contributions section */
+.contribution-card {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  flex: 1;
+}
+
+.contribution-card h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contribution-card .amount {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contribution-card .progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.contribution-card .progress-bar {
+  height: 100%;
+  background-color: #0080ff;
+  transition: width 0.4s ease;
+}
+
+/* Transactions section */
+.transactions {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  flex: 1;
+}
+
+.transactions .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.transactions h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.transactions ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.transactions ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.transactions ul li:last-child {
+  border-bottom: none;
+}
+
+.transactions ul li span {
+  flex: 1;
+  text-align: center;
+}
