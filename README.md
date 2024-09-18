@@ -1,6 +1,6 @@
 **SavePals**
 
-This repository contains scripts that define the SavePals application. 
+This repository contains scripts that define the SavePals application, a financial application that focusses on friends contributing towards achieving a goal rather than relying on traditional loans to raise funds.
 
 **Overview**
 
