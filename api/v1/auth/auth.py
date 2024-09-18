@@ -2,8 +2,8 @@
 """
 Defines an endpoint that handles user authentication
 """
-from flask import request, jsonify, abort
-from flask_jwt_extended import JWTManager, create_access_token
+from flask import request, jsonify, abort, make_response
+from flask_jwt_extended import JWTManager, create_access_token, unset_jwt_cookies
 from werkzeug.security import check_password_hash, generate_password_hash
 from api.v1.auth import auth_bp
 from models import storage
@@ -51,5 +51,15 @@ def login():
     # Create JWT token
     access_token = create_access_token(identity={'email': user.email})
 
-    # Return the JWT token and user_id
-    return jsonify({'token': access_token, 'user_id': user.id}), 200
+    # Create a response and set the JWT token in a cookie
+    response = make_response(jsonify({'message': 'Login successful', 'user_id': user.id}))
+    response.set_cookie('jwt_token', access_token, httponly=True)
+
+    return response
+
+
+@auth_bp.route('/logout', methods=['POST'])
+def logout():
+    response = jsonify({'message': 'Logged out successfully'})
+    unset_jwt_cookies(response)
+    return response
