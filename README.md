@@ -6,14 +6,14 @@ This repository contains scripts that define the SavePals application, a financi
 
 SavePals is a collaborative savings platform that allows friends to save money together by setting group goals, tracking progress, and managing contributions. Built with Flask, the application provhrefes a streamlined and user-friendly interface for managing group savings plans, making financial collaboration easier and more transparent.
 
-<img alt="Overview of SavePals application dashboard" src="web_dynamic/static/images/savepal_dashboard.jpg" width="70%">
+<img alt="Overview of SavePals application dashboard" src="web_dynamic/static/images/dashboard.jpg" width="70%">
 
 
 **How it works**
 
 This application comprises of two parts, the first is the API server that defines the endpoints used to access the data in the storage and the second part is the web_dynamic server that renders application templates. Using JQuery, API calls are made to the API server and data is populated in the templates.
 
-<img alt="SavePals application architecture" src="web_dynamic/static/images/savepal_architecture.jpg">
+<img alt="SavePals application architecture" src="web_dynamic/static/images/architecture.jpg">
 
 **Table of Contents**
 
